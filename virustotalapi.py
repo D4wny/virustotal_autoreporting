@@ -4,10 +4,10 @@ import json
 import os
 from time import sleep
 
-def scan(path, api_key):
+def scan(file_name, path, api_key):
 	url = 'https://www.virustotal.com/vtapi/v2/file/scan'
 	params = {'apikey': api_key}
-	files = {'file': ('lansom_test', open(path, 'rb'))}
+	files = {'file': (file_name, open(path, 'rb'))}
 	response = requests.post(url, files=files, params=params)
 	data = response.json()
 	sending = data["response_code"]
@@ -45,15 +45,15 @@ def file_list(path):
 
 if __name__ == "__main__":
 	api_key = ''
-	lansom_path = '/home/dawn/Desktop/samples-training-set/'
+	ransom_path = '/home/dawn/Desktop/samples-training-set/'
 	log_file = '/home/dawn/Desktop/source/detect_list'
 	#scan(lansom_path , api_key)
 	#report(resource, api_key, log_file)
 	#file_list('/home/dawn/Desktop/samples-testset/')
-	fl = file_list(lansom_path)
+	fl = file_list(ransom_path)
 	for each_list in fl:
-		lansome_file_path = lansom_path + str(each_list)
-		scan_chk = scan(lansome_file_path, api_key)
+		ransome_file_path = ransom_path + str(each_list)
+		scan_chk = scan(each_list, ransome_file_path, api_key)
 		if (scan_chk == 1):
 			sleep(20)
 			report_chk = report(str(each_list), api_key, log_file)
