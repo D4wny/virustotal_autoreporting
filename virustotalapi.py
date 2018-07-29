@@ -44,7 +44,7 @@ def file_list(path):
 		
 
 if __name__ == "__main__":
-	api_key = '3130d3c077412f171bce120ad1b881849ef79ca68474dbc3b58ac4d6ee0e5063'
+	api_key = ''
 	lansom_path = '/home/dawn/Desktop/samples-training-set/'
 	log_file = '/home/dawn/Desktop/source/detect_list'
 	#scan(lansom_path , api_key)
